@@ -52,8 +52,28 @@
         NSLog(@"Bad Item = %@", element.name);
     }
 
+    
+    // Пример 1
+    NSArray* internallArrayCollection = @[@"Item1", @"Item2", @"Item3", @"Item4", @"Dima"];
+    
+    NSEnumerator *enumerator = [internallArrayCollection objectEnumerator];
+    NSString* elementString;
+    
+    while (elementString = [enumerator nextObject]) {
+        NSLog(@"%@",elementString);
+    }
+    
+    //////
+    
+    // Пример 2
+    [internallArrayCollection enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        if([obj localizedCaseInsensitiveCompare:@"Dima"] == NSOrderedSame)
+        {
+            NSLog(@"Dima has been found!"); *stop = YES;
+        }
+    }];
+    
 }
-
 
 
 
